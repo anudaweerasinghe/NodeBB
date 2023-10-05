@@ -16,6 +16,7 @@ ENV REDIS_PORT $REDIS_PORT
 COPY --chown=node:node install/package.json /usr/src/app/package.json
 
 COPY --chown=node:node create_config.sh /usr/src/app/create_config.sh
+COPY --chown=node:node config_template.json /usr/src/app/config_template.json
 
 RUN /usr/src/app/create_config.sh
 
