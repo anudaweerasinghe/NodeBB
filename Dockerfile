@@ -6,6 +6,8 @@ WORKDIR /usr/src/app
 
 RUN apt-get update && apt-get install -y jq
 
+RUN ./create_config.sh
+
 ARG NODE_ENV
 ENV NODE_ENV $NODE_ENV
 
@@ -23,7 +25,5 @@ ENV NODE_ENV=production \
     silent=false
 
 EXPOSE 4567
-
-RUN ./create_config.sh
 
 CMD test -n "${SETUP}" && ./nodebb setup || node ./nodebb build; node ./nodebb start
