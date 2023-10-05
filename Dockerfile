@@ -4,6 +4,8 @@ RUN mkdir -p /usr/src/app && \
     chown -R node:node /usr/src/app
 WORKDIR /usr/src/app
 
+RUN apt-get update && apt-get install -y jq
+
 ARG NODE_ENV
 ENV NODE_ENV $NODE_ENV
 
