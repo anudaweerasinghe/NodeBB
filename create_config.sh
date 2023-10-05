@@ -9,4 +9,4 @@ json_data=$(jq --arg host "$REDIS_HOST" --arg port "$REDIS_PORT" --arg password 
 # Write the updated JSON file to config.json
 echo "$json_data" > "config.json"
 
-echo "$json_data"
+cat config.json
