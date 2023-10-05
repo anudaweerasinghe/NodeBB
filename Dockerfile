@@ -7,7 +7,11 @@ WORKDIR /usr/src/app
 RUN apt-get update && apt-get install -y jq
 
 ARG NODE_ENV
+
 ENV NODE_ENV $NODE_ENV
+ENV REDIS_HOST $REDIS_HOST
+ENV REDIS_PASSWORD $REDIS_PASSWORD
+ENV REDIS_PORT $REDIS_PORT
 
 COPY --chown=node:node install/package.json /usr/src/app/package.json
 
