@@ -1,12 +1,5 @@
 #!/bin/bash
 
-# Load the environment variables from the .env file
-source .env
-
-redis_host=$REDIS_HOST 
-
-echo $redis_host
-
 # Read the JSON file
 json_data=$(cat "config_template.json")
 
