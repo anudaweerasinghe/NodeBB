@@ -14,9 +14,9 @@ ENV NODE_ENV $NODE_ENV
 COPY --chown=node:node install/package.json /usr/src/app/package.json
 
 
-RUN chmod +x create_config.sh
+RUN chmod +x /usr/src/app/create_config.sh
 
-RUN ./create_config.sh
+RUN /usr/src/app/create_config.sh
 
 USER node
 
