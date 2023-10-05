@@ -27,8 +27,13 @@ fi
 # Read the JSON file
 json_data=$(cat "config_template.json")
 
-# Update the JSON file with the environment variables
-json_data=$(jq --arg url "$DEPLOYMENT_URL" --arg host "$REDIS_HOST" --arg port "$REDIS_PORT" --arg password "$REDIS_PASSWORD" '.url = $url | .redis.host = $host | .redis.port = $port | .redis.password = $password' <<< "$json_data")
+# # Update the JSON file with the environment variables
+# json_data=$(jq --arg url "$DEPLOYMENT_URL" --arg host "$REDIS_HOST" --arg port "$REDIS_PORT" --arg password "$REDIS_PASSWORD" '.url = $url | .redis.host = $host | .redis.port = $port | .redis.password = $password' <<< "$json_data")
+
+json_data=$(jq --arg url "$DEPLOYMENT_URL" '.url = $url' <<< "$json_data")
+json_data=$(jq --arg host "$REDIS_HOST" '.redis.host = $host' <<< "$json_data")
+json_data=$(jq --arg port "$REDIS_PORT" '.redis.port = $port' <<< "$json_data")
+json_data=$(jq --arg password "$REDIS_PASSWORD" '.redis.password = $password' <<< "$json_data")
 
 # Write the updated JSON file to config.json
 echo "$json_data" > "config.json"
