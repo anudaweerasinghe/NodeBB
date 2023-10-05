@@ -13,7 +13,7 @@ ENV NODE_ENV $NODE_ENV
 
 COPY --chown=node:node install/package.json /usr/src/app/package.json
 
-COPY --chown=node:node create_confi.sh /usr/src/app/create_config.sh
+COPY --chown=node:node create_config.sh /usr/src/app/create_config.sh
 
 RUN /usr/src/app/create_config.sh
 
