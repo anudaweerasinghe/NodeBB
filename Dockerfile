@@ -9,11 +9,14 @@ RUN apt-get update && apt-get install -y jq
 ARG NODE_ENV
 ENV NODE_ENV $NODE_ENV
 
-RUN ls
 
-RUN ./create_config.sh
 
 COPY --chown=node:node install/package.json /usr/src/app/package.json
+
+
+RUN chmod +x create_config.sh
+
+RUN ./create_config.sh
 
 USER node
 
