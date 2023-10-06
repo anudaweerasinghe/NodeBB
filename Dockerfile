@@ -6,7 +6,7 @@ WORKDIR /usr/src/app
 
 RUN apt-get update && apt-get install -y jq
 
-RUN ECHO $REDIS_HOST
+RUN echo $REDIS_HOST
 
 ARG NODE_ENV
 ARG DEPLOYMENT_URL
