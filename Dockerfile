@@ -7,6 +7,7 @@ WORKDIR /usr/src/app
 RUN apt-get update && apt-get install -y jq
 
 ARG NODE_ENV
+ARG DEPLOYMENT_URL
 
 ENV NODE_ENV $NODE_ENV
 ENV REDIS_HOST $REDIS_HOST
