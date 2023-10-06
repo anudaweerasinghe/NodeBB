@@ -30,4 +30,4 @@ ENV NODE_ENV=production \
 
 EXPOSE 4567
 
-CMD echo $REDIS_HOST && /usr/src/app/create_config.sh && test -n "${SETUP}" && ./nodebb setup || node ./nodebb build; node ./nodebb start
+CMD /usr/src/app/create_config.sh && test -n "${SETUP}" && ./nodebb setup || node ./nodebb build; node ./nodebb start
