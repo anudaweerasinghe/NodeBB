@@ -4,18 +4,10 @@ RUN mkdir -p /usr/src/app && \
     chown -R node:node /usr/src/app
 WORKDIR /usr/src/app
 
-RUN apt-get update && apt-get install -y jq
-
-RUN echo $REDIS_HOST
-
 ARG NODE_ENV
-
 ENV NODE_ENV $NODE_ENV
 
 COPY --chown=node:node install/package.json /usr/src/app/package.json
-
-COPY --chown=node:node create_config.sh /usr/src/app/create_config.sh
-COPY --chown=node:node config_template.json /usr/src/app/config_template.json
 
 USER node
 
@@ -30,4 +22,4 @@ ENV NODE_ENV=production \
 
 EXPOSE 4567
 
-CMD /usr/src/app/create_config.sh && test -n "${SETUP}" && ./nodebb setup || node ./nodebb build; node ./nodebb start
+CMD  ./create_config.sh && test -n "${SETUP}" && ./nodebb setup || node ./nodebb build; node ./nodebb start
